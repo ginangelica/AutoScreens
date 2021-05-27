@@ -6,8 +6,6 @@ import pyautogui
 # except:
 #   print ('The image could not be found.')
 
-#pyautogui.click('notes.png')
-
 getWindow = pyautogui.getWindowsWithTitle('Notepad') #gets all the windows with the string in the title
 assignWindow = getWindow[0] #bc is a list, pass the first value of the list to the var assignWindow
 
