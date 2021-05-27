@@ -91,7 +91,7 @@ def locateImageOnScreen(ImageName):
 imageName = 'Profile.PNG'
 locateImageOnScreen(imageName);pyautogui.moveTo(imageName)
 pyautogui.write(['down','down','\n'],interval=0.2)
-pyautogui.sleep(2)
+pyautogui.sleep(3)
 myScreen = pyautogui.screenshot(region=(189,82,669,234))
 myScreen.save('ProfileScreenshot.png')
 
