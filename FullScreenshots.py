@@ -26,8 +26,8 @@ def checkIfWindowMax(windowTitle):
     It will maximize it in case it is not.
     '''
     WinTitle = pyautogui.getWindowsWithTitle(windowTitle)[0] 
-    if WinTitle.isMaximized == False:
-        WinTitle.maximize()
+    if WinTitle.isMaximized is False:
+        return WinTitle.maximize()
     else:
         print('It was already maximized.')
 
@@ -52,7 +52,8 @@ else:
         password = pyautogui.password ('What is your password?')
         if userName and password != None: #TODO: If the username is there but is wrong. Replace the username.
             time.sleep(1)
-            pyautogui.click(567,299);pyautogui.write(userName + '\t')
+            pyautogui.click(567,299)
+            pyautogui.write(userName +'\t')
             pyautogui.write(password)
             pyautogui.write('\n')
             time.sleep(5)
@@ -81,18 +82,23 @@ def locateImageOnScreen(ImageName):
     Args:
         ImageName (string): Name of the image that should be locates on the screen.
         Example ('Profile.png')
-    """    
+    """
+    location =   pyautogui.locateOnScreen(ImageName)  
     try: 
-        pyautogui.locateOnScreen(ImageName)
+        for x in location:
+            return location
     except:
         sys.exit('The image could not be found in the active screen. \n'+'Stopping program.')
-
+        
 # Go to the 'PROFILE' section on the page and take a screenshot.
 imageName = 'Profile.PNG'
-locateImageOnScreen(imageName);pyautogui.moveTo(imageName)
+locateImageOnScreen(imageName)
+print('Image found.')
+pyautogui.moveTo(imageName)
 pyautogui.write(['down','down','\n'],interval=0.2)
 pyautogui.sleep(3)
 myScreen = pyautogui.screenshot(region=(189,82,669,234))
 myScreen.save('ProfileScreenshot.png')
+print('Screenshot saved.')
 
 # Save image to a Word Doc
